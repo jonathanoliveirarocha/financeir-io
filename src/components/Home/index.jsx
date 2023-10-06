@@ -1,14 +1,14 @@
 import React from "react"
 import * as D from "./styles"
 
-const Default = () =>{
+const Home = () =>{
     return (
         <> 
            <D.Main>
-                <h1>Página Default</h1>
+                <h1>Home</h1>
            </D.Main>
         </>
                   
     )
 }
-export default Default
+export default Home
