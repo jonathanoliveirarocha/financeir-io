@@ -1,19 +1,19 @@
-import React from "react";
-import * as D from "./styles";
-import { useState } from "react";
+import React from "react"
+import * as D from "./styles"
+import { useState } from "react"
 
 const CompoundInterest = () => {
-  const [value, setValue] = useState(0);
-  const [fees, setFees] = useState(0);
-  const [time, setTime] = useState(0);
-  const [injection, setInjection] = useState(0);
-  const [typeFees, setTypeFees] = useState("monthly");
-  const [typeTime, setTypeTime] = useState("months");
-  const [amount, setAmount] = useState(0);
-  const [valueWithInjetion, setValueWithInjetion] = useState(0);
+  const [value, setValue] = useState(0)
+  const [fees, setFees] = useState(0)
+  const [time, setTime] = useState(0)
+  const [injection, setInjection] = useState(0)
+  const [typeFees, setTypeFees] = useState("monthly")
+  const [typeTime, setTypeTime] = useState("months")
+  const [amount, setAmount] = useState(0)
+  const [valueWithInjetion, setValueWithInjetion] = useState(0)
 
   const calculate = () => {
-      let tempFees = typeFees==="monthly"? fees/100:  ((1 + (fees/100)) ** (1/12)) - 1
+      let tempFees = typeFees==="monthly"? fees/100: ((1 + fees/100) ** (1/12)) - 1
       let tempTime = typeTime==="months"?time: time*12
       let result = value 
       
