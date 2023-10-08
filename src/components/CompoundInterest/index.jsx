@@ -10,6 +10,7 @@ const CompoundInterest = () => {
   const [typeFees, setTypeFees] = useState("monthly");
   const [typeTime, setTypeTime] = useState("months");
   const [amount, setAmount] = useState(0);
+  const [valueWithInjetion, setValueWithInjetion] = useState(0);
 
   const calculate = () => {
       let tempFees = typeFees==="monthly"? fees/100:  ((1 + (fees/100)) ** (1/12)) - 1
@@ -21,6 +22,8 @@ const CompoundInterest = () => {
         result+=injection
       }
       setAmount(result)
+      setValueWithInjetion(value+tempTime*injection)
+      
   }
 
   return (
@@ -70,7 +73,7 @@ const CompoundInterest = () => {
         <br />
         <button onClick={calculate}>Calcular</button>
         <div>
-          <p>Seu dinheiro rendeu R${(amount-value).toFixed(2)}, resultando em um montante de R${amount.toFixed(2)}.</p>
+          <p>Seu dinheiro rendeu R${(amount- valueWithInjetion).toFixed(2)}, resultando em um montante de R${amount.toFixed(2)}.</p>
         </div>
       </D.Main>
     </>
