@@ -17,7 +17,6 @@ const CurrencyConverter = () => {
   }, [from]);
 
   useEffect(() => {
-    convert();
   }, [price]);
 
   return (
