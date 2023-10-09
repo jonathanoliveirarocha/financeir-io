@@ -47,28 +47,28 @@ const FinancialControl = () => {
     <G.Main>
       <G.Card>
         <h1>Controle Financeiro</h1>
-        <G.DivSpaceB>
-          <G.MiniCard>
+        <D.DivSpaceB>
+          <D.MiniCard id="in-card">
             <div>
               <p>Entradas:</p>
               <p>R${total[0]}</p>
             </div>
-          </G.MiniCard>
-          <G.MiniCard>
+          </D.MiniCard>
+          <D.MiniCard id="out-card">
             <div>
               <p>Saídas:</p>
               <p>R${total[1]}</p>
             </div>
-          </G.MiniCard>
-          <G.MiniCard>
+          </D.MiniCard>
+          <D.MiniCard id="total-card">
             <div>
               <p>Total:</p>
               <p>R${total[2]}</p>
             </div>
-          </G.MiniCard>
-        </G.DivSpaceB>
+          </D.MiniCard>
+        </D.DivSpaceB>
 
-        <G.DivSpaceB>
+        <D.DivSpaceB>
           <div>
             <label>Rótulo: </label>
             <G.Input type="text" ref={textRef} />
@@ -86,17 +86,17 @@ const FinancialControl = () => {
           </div>
 
           <G.Button onClick={addItem}>Adicionar</G.Button>
-        </G.DivSpaceB>
+        </D.DivSpaceB>
 
-        <G.MoneyView>
+        <D.MoneyView>
           {list.map((element) => (
-            <G.ElementMoneyView key={element.id}>
+            <D.ElementMoneyView key={element.id}>
               <p>{element.name}</p>
               <p>R${element.value.toFixed(2)}</p>
               {element.type === "in" ? (
-                <G.In>Entrada</G.In>
+                <D.In>Entrada</D.In>
               ) : (
-                <G.Out>Saída</G.Out>
+                <D.Out>Saída</D.Out>
               )}
               <button
                 style={{
@@ -108,9 +108,9 @@ const FinancialControl = () => {
               >
                 ❌
               </button>
-            </G.ElementMoneyView>
+            </D.ElementMoneyView>
           ))}
-        </G.MoneyView>
+        </D.MoneyView>
       </G.Card>
     </G.Main>
   );

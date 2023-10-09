@@ -10,8 +10,8 @@ body {
 }
 
 ::-webkit-scrollbar{
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   background-color: initial;
   border: 1px solid back;
 }
@@ -19,4 +19,16 @@ body {
 ::-webkit-scrollbar-thumb{
   background-color: #555;
   border-radius: 20px;  
+}
+
+#in-card{
+  color: #0eb464;
+}
+
+#out-card{
+  color: #df4a4a;
+}
+
+#total-card{
+  color: #13b9d6;
 }

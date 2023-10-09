@@ -14,7 +14,7 @@ function App() {
   function changePage() {
     if (page === "Home") {
       document.title = "Financeir.io - Home";
-      return <Home />;
+      return <Home setPage={setPage} />;
     } else if (page === "CompoundInterest") {
       document.title = "Financeir.io - Juros Compostos";
       return <CompoundInterest />;

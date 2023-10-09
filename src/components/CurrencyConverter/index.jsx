@@ -22,22 +22,22 @@ const CurrencyConverter = () => {
   return (
     <>
       <G.Main>
-        <div>
+        <G.Card>
           <h1>Conversor de Moedas</h1>
           <label>Valor: </label>
-          <input
+          <G.Input
             min="0"
             type="number"
             placeholder="Valor"
             value={input}
             onChange={(e) => setInput(parseFloat(e.target.value))}
           />
-          <select onChange={(e) => setFrom(e.target.value)}>
+          <G.Select onChange={(e) => setFrom(e.target.value)}>
             <option value="brl">Real</option>
             <option value="usd">Dólar</option>
             <option value="eur">Euro</option>
             <option value="btc">Bitcoin</option>
-          </select>
+          </G.Select>
           {from !== "brl" ? (
             <p>BRL: ${(input * price["brl"]).toFixed(2)}</p>
           ) : null}
@@ -50,7 +50,7 @@ const CurrencyConverter = () => {
           {from !== "btc" ? (
             <p>BTC: ${(input * price["btc"]).toFixed(9)}</p>
           ) : null}
-        </div>
+        </G.Card>
       </G.Main>
     </>
   );
