@@ -1,12 +1,13 @@
 import React from "react";
 import * as D from "./styles";
+import * as G from "../general";
 
 const Home = () => {
   return (
     <>
-      <D.Main>
-        <h1>Home</h1>
-      </D.Main>
+      <G.Main>
+    
+      </G.Main>
     </>
   );
 };

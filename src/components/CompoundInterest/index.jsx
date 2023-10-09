@@ -1,5 +1,6 @@
 import React from "react";
 import * as D from "./styles";
+import * as G from "../general";
 import { useState } from "react";
 
 const CompoundInterest = () => {
@@ -28,56 +29,58 @@ const CompoundInterest = () => {
 
   return (
     <>
-      <D.Main>
-        <h1>Juros Compostos</h1>
-        <label>Valor Inicial:</label>
-        <input
-          type="number"
-          value={value}
-          onChange={(e) => setValue(parseFloat(e.target.value))}
-        />
-        <br />
-
-        <label>Adição Mensal:</label>
-        <input
-          type="number"
-          value={injection}
-          onChange={(e) => setInjection(parseFloat(e.target.value))}
-        />
-        <br />
-
-        <label>Taxa de Juros (%):</label>
-        <input
-          type="number"
-          value={fees}
-          onChange={(e) => setFees(parseFloat(e.target.value))}
-        />
-        <select onChange={(e) => setTypeFees(e.target.value)}>
-          <option value="monthly">Mensal</option>
-          <option value="yearly">Anual</option>
-        </select>
-
-        <br />
-
-        <label>Período de Tempo:</label>
-        <input
-          type="number"
-          value={time}
-          onChange={(e) => setTime(parseInt(e.target.value))}
-        />
-        <select onChange={(e) => setTypeTime(e.target.value)}>
-          <option value="months">Meses</option>
-          <option value="years">Anos</option>
-        </select>
-        <br />
-        <button onClick={calculate}>Calcular</button>
+      <G.Main>
         <div>
-          <p>
-            Seu dinheiro rendeu R${(amount - valueWithInjetion).toFixed(2)},
-            resultando em um montante de R${amount.toFixed(2)}.
-          </p>
+          <h1>Juros Compostos</h1>
+          <label>Valor Inicial:</label>
+          <input
+            type="number"
+            value={value}
+            onChange={(e) => setValue(parseFloat(e.target.value))}
+          />
+          <br />
+
+          <label>Adição Mensal:</label>
+          <input
+            type="number"
+            value={injection}
+            onChange={(e) => setInjection(parseFloat(e.target.value))}
+          />
+          <br />
+
+          <label>Taxa de Juros (%):</label>
+          <input
+            type="number"
+            value={fees}
+            onChange={(e) => setFees(parseFloat(e.target.value))}
+          />
+          <select onChange={(e) => setTypeFees(e.target.value)}>
+            <option value="monthly">Mensal</option>
+            <option value="yearly">Anual</option>
+          </select>
+
+          <br />
+
+          <label>Período de Tempo:</label>
+          <input
+            type="number"
+            value={time}
+            onChange={(e) => setTime(parseInt(e.target.value))}
+          />
+          <select onChange={(e) => setTypeTime(e.target.value)}>
+            <option value="months">Meses</option>
+            <option value="years">Anos</option>
+          </select>
+          <br />
+          <button onClick={calculate}>Calcular</button>
+          <div>
+            <p>
+              Seu dinheiro rendeu R${(amount - valueWithInjetion).toFixed(2)},
+              resultando em um montante de R${amount.toFixed(2)}.
+            </p>
+          </div>
         </div>
-      </D.Main>
+      </G.Main>
     </>
   );
 };
