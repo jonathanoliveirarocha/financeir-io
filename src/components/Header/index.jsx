@@ -1,5 +1,5 @@
-import React from "react"
-import * as H from "./styles"
+import React from "react";
+import * as H from "./styles";
 
 const Header = (props) => {
   return (

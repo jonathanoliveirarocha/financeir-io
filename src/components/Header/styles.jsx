@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Header = styled.header`
   width: 100%;
@@ -22,7 +22,7 @@ export const Link = styled.a`
   padding: 8px 16px;
   text-decoration: none;
   &:hover {
-    color:#c4c4c4;
+    color: #c4c4c4;
   }
 `;
 
