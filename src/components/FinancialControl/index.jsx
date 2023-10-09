@@ -104,7 +104,6 @@ const FinancialControl = () => {
                   border: "none",
                   cursor: "pointer",
                 }}
-                id="remove-btn"
                 onClick={() => deleteElement(element.id)}
               >
                 ❌
