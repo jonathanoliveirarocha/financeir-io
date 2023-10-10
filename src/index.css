@@ -17,9 +17,15 @@ body {
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: #555;
+  background-color: #7d7d7d;
   border-radius: 20px;  
 }
+
+#ElementMoneyLeft{
+  width: 17%;
+  justify-content: left;
+}
+
 
 #in-card{
   color: #0eb464;

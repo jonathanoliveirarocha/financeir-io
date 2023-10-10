@@ -46,7 +46,6 @@ const FinancialControl = () => {
   return (
     <G.Main>
       <G.Card>
-        <h1>Controle Financeiro</h1>
         <D.DivSpaceB>
           <D.MiniCard id="in-card">
             <div>
@@ -91,23 +90,34 @@ const FinancialControl = () => {
         <D.MoneyView>
           {list.map((element) => (
             <D.ElementMoneyView key={element.id}>
-              <p>{element.name}</p>
-              <p>R${element.value.toFixed(2)}</p>
-              {element.type === "in" ? (
-                <D.In>Entrada</D.In>
-              ) : (
-                <D.Out>Saída</D.Out>
-              )}
-              <button
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-                onClick={() => deleteElement(element.id)}
-              >
-                ❌
-              </button>
+              <D.ElementMoneyCenter id="ElementMoneyLeft">
+                <p>{element.name}</p>
+              </D.ElementMoneyCenter>
+
+              <D.ElementMoneyCenter>
+                <p>R${element.value.toFixed(2)}</p>
+              </D.ElementMoneyCenter>
+
+              <D.ElementMoneyCenter>
+                {element.type === "in" ? (
+                  <D.In>Entrada</D.In>
+                ) : (
+                  <D.Out>Saída</D.Out>
+                )}
+              </D.ElementMoneyCenter>
+
+              <D.ElementMoneyCenter>
+                <button
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => deleteElement(element.id)}
+                >
+                  ❌
+                </button>
+              </D.ElementMoneyCenter>
             </D.ElementMoneyView>
           ))}
         </D.MoneyView>

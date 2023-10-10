@@ -23,7 +23,6 @@ const CurrencyConverter = () => {
     <>
       <G.Main>
         <G.Card>
-          <h1>Conversor de Moedas</h1>
           <label>Valor: </label>
           <G.Input
             min="0"
@@ -38,18 +37,32 @@ const CurrencyConverter = () => {
             <option value="eur">Euro</option>
             <option value="btc">Bitcoin</option>
           </G.Select>
-          {from !== "brl" ? (
-            <p>BRL: ${(input * price["brl"]).toFixed(2)}</p>
-          ) : null}
-          {from !== "usd" ? (
-            <p>USD: ${(input * price["usd"]).toFixed(2)}</p>
-          ) : null}
-          {from !== "eur" ? (
-            <p>EUR: ${(input * price["eur"]).toFixed(2)}</p>
-          ) : null}
-          {from !== "btc" ? (
-            <p>BTC: ${(input * price["btc"]).toFixed(9)}</p>
-          ) : null}
+          <D.CurrencyCardContent>
+            {from !== "brl" ? (
+              <div>
+                <p>BRL:</p>
+                <p>${(input * price["brl"]).toFixed(2)}</p>
+              </div>
+            ) : null}
+            {from !== "usd" ? (
+              <div>
+                <p>USD:</p>
+                <p>${(input * price["usd"]).toFixed(2)}</p>
+              </div>
+            ) : null}
+            {from !== "eur" ? (
+              <div>
+                <p>EUR:</p>
+                <p>${(input * price["eur"]).toFixed(2)}</p>
+              </div>
+            ) : null}
+            {from !== "btc" ? (
+              <div>
+                <p>BTC:</p>
+                <p>${(input * price["btc"]).toFixed(9)}</p>
+              </div>
+            ) : null}
+          </D.CurrencyCardContent>
         </G.Card>
       </G.Main>
     </>

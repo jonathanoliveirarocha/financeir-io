@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Input = styled.input`
   padding: 5px;
   width: 100px;
-  border: solid 1px grey;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 `;
 
 export const Button = styled.button`
@@ -12,7 +12,7 @@ export const Button = styled.button`
   border: none;
   background-color: #1e7661;
   border: solid 1px #1e7661;
-  border-radius: 5px;
+  border-radius: 3px;
   color: #cfe3db;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -25,8 +25,8 @@ export const Button = styled.button`
 export const Select = styled.select`
   padding: 5px;
   width: fit-content;
-  border: solid 1px grey;
-  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
   cursor: pointer;
 `;
 

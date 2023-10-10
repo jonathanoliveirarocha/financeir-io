@@ -7,16 +7,15 @@ export const MiniCard = styled.div`
   border-radius: 8px;
   width: 30%;
   height: 60px;
-  border: solid 1px grey;
+  border: 1px solid #ccc;
   font-size: large;
 `;
 
 export const MoneyView = styled.div`
   padding: 5px;
   justify-content: space-between;
-  height: 61%;
+  height: 65%;
   border-radius: 8px;
-  box-shadow: inset 0px 0px 15px 3px #e9ebea;
   margin: 5px;
   overflow-y: scroll;
   margin-top: 25px;
@@ -40,8 +39,14 @@ export const ElementMoneyView = styled.div`
   margin-bottom: 5px;
   padding: 6px;
   justify-content: space-between;
-  box-shadow: 0px 0px 5px 3px #e9ebea;
+  box-shadow: 0px 0px 9px 0px #e9ebea;
 `;
+
+export const ElementMoneyCenter = styled.div`
+  display: flex;
+  justify-content: right;
+  width: 30%;
+`
 
 export const DivSpaceB = styled.div`
   align-items: center;

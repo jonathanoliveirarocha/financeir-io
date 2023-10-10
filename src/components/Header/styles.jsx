@@ -6,6 +6,7 @@ export const Header = styled.header`
   background: #1e7661;
   display: flex;
   align-items: center;
+  box-shadow: 5px 5px 10px -1px #b0b3b2;
 `;
 export const Logo = styled.h1`
   font-size: larger;

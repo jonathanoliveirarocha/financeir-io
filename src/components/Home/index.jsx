@@ -23,8 +23,9 @@ const Home = (props) => {
             </a>
           </D.Control>
         </D.Cta>
-
-        <D.Img src="/images/creditCard.png" alt="" />
+        
+        <D.Img src="/images/creditCard.png" alt="Cartão de Crédito" />
+         {/* Used image: https://br.freepik.com/psd-gratuitas/maquete-de-cartao-de-credito-de-plastico_4436557.htm#query=cartao%20de%20credito&position=3&from_view=search&track=ais */}
       </G.Main>
     </>
   );
