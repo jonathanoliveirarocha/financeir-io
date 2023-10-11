@@ -18,6 +18,16 @@ export const Control = styled.div`
   width: 60%;
   height: 30%;
   margin: 0 auto;
+  @media (max-width: 1048px) {
+    &{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 60%;
+      width: 94%;
+    }
+  }
 `;
 
 export const Cta = styled.div`
@@ -31,6 +41,13 @@ export const Cta = styled.div`
   position: fixed;
   display: flex;
   align-items: center;
+  margin-bottom: 100px;
+  @media (max-width: 1048px) {
+    &{
+      width: 94%;
+      margin-left: 3%;
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -50,6 +67,12 @@ export const Button = styled.button`
 `;
 
 export const Img = styled.img`
+  @media (max-width: 1048px) {
+    &{
+      display: none;
+    }
+  }
+  margin-bottom: 90px;
   @keyframes rotate {
     0% {
       transform: rotate(-2deg);

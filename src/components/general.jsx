@@ -24,7 +24,7 @@ export const Button = styled.button`
 `;
 
 export const Select = styled.select`
-  padding: 5px;
+  padding: 5px 1px;
   width: fit-content;
   border: 1px solid #ccc;
   border-radius: 3px;

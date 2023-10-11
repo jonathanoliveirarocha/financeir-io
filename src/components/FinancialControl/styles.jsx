@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MiniCard = styled.div`
   display: flex;
+  overflow-x: auto;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -9,6 +10,11 @@ export const MiniCard = styled.div`
   height: 60px;
   border: 1px solid #ccc;
   font-size: large;
+  @media (max-width: 528px) {
+    & p{
+      font-size: 16px;
+    }
+  }
 `;
 
 export const MoneyView = styled.div`
