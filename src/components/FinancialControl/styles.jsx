@@ -46,13 +46,18 @@ export const ElementMoneyCenter = styled.div`
   display: flex;
   justify-content: right;
   width: 30%;
-`
+`;
 
 export const DivSpaceB = styled.div`
-  align-items: center;
   border-radius: 8px;
   justify-content: space-between;
   padding: 10px;
   width: 100%;
   display: flex;
+  @media (max-width: 858px) {
+    & button {
+      margin-top: 18px;
+      height: 28px;
+    }
+  }
 `;

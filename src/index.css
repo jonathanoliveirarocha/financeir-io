@@ -38,3 +38,36 @@ body {
 #total-card{
   color: #13b9d6;
 }
+
+#brl-div{
+  line-height: 10px;
+  & img{
+    object-fit: cover;
+    object-position: 0px -1px;
+    height: 40px;
+  }
+}
+
+#usd-div{
+  line-height: 5px;
+  & img{
+    object-fit: cover;
+    object-position: 0px 10px;
+    height: 40px;
+  }
+}
+
+#eur-div{
+  & img{
+    height: 30px;
+  }
+}
+
+#btc-div{
+  line-height: 20px;
+  & img{
+    object-fit: cover;
+    object-position: 0px 1px;
+    height: 28px;
+  }
+}

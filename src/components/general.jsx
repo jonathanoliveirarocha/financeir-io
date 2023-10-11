@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Input = styled.input`
   padding: 5px;
-  width: 100px;
+  width: 70%;
+  min-width: 50px;
   border: 1px solid #ccc;
   border-radius: 3px;
 `;
@@ -28,6 +29,8 @@ export const Select = styled.select`
   border: 1px solid #ccc;
   border-radius: 3px;
   cursor: pointer;
+  width: 80px;
+  margin: 0px 10px;
 `;
 
 export const Main = styled.div`
@@ -46,8 +49,10 @@ export const Card = styled.div`
   text-align: center;
   width: 80%;
   max-width: 700px;
+  min-width: 395px;
   height: 500px;
   border-radius: 20px;
   box-shadow: 5px 5px 10px 3px #e9ebea;
   background-color: #ffffffce;
 `;
+
