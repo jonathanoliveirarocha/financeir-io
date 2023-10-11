@@ -25,8 +25,9 @@ const CurrencyConverter = () => {
         <G.Card>
           <D.CurrencyContent>
             <D.inputsDiv>
-              <label>Valor: </label>
+              <label htmlFor="value">Valor: </label>
               <G.Input
+                id="value"
                 min="0"
                 type="number"
                 placeholder="Valor"
@@ -46,7 +47,6 @@ const CurrencyConverter = () => {
                 <D.coinContent>
                   <div id="brl-div">
                     <img
-                      class="coin-icon"
                       src="/public/images/brl-icon.svg"
                       alt="Icone do Real"
                     />
@@ -59,7 +59,6 @@ const CurrencyConverter = () => {
                 <D.coinContent>
                   <div id="usd-div">
                     <img
-                      class="coin-icon"
                       src="/public/images/usd-icon.svg"
                       alt="Icone do Dólar"
                     />
@@ -72,7 +71,6 @@ const CurrencyConverter = () => {
                 <D.coinContent>
                   <div id="eur-div">
                     <img
-                      class="coin-icon"
                       src="/public/images/eur-icon.svg"
                       alt="Icone do Euro"
                     />
@@ -85,7 +83,6 @@ const CurrencyConverter = () => {
                 <D.coinContent>
                   <div id="btc-div">
                     <img
-                      class="coin-icon"
                       src="/public/images/btc-icon.svg"
                       alt="Icone do Bitcoin"
                     />

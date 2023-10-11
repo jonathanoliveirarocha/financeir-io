@@ -4,7 +4,11 @@ import * as F from "./styles";
 const Footer = () => {
   return (
     <>
-      <F.Footer>© Jonthan de Olivera Rocha</F.Footer>
+      <F.Footer>
+        <a href="https://github.com/jonathanoliveirarocha" target="__blank">
+          © Jonthan de Olivera Rocha
+        </a>
+      </F.Footer>
     </>
   );
 };

@@ -9,65 +9,80 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   background-color: initial;
   border: 1px solid back;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #7d7d7d;
-  border-radius: 20px;  
+  border-radius: 20px;
 }
 
-#ElementMoneyLeft{
+#ElementMoneyLeft {
   width: 17%;
   justify-content: left;
 }
 
-
-#in-card{
+#in-card {
   color: #0eb464;
 }
 
-#out-card{
+#out-card {
   color: #df4a4a;
 }
 
-#total-card{
+#total-card {
   color: #13b9d6;
 }
 
-#brl-div{
+#brl-div {
   line-height: 10px;
-  & img{
+  & img {
     object-fit: cover;
     object-position: 0px -1px;
     height: 40px;
   }
 }
 
-#usd-div{
+#usd-div {
   line-height: 5px;
-  & img{
+  & img {
     object-fit: cover;
     object-position: 0px 10px;
     height: 40px;
   }
 }
 
-#eur-div{
-  & img{
+#eur-div {
+  & img {
     height: 30px;
   }
 }
 
-#btc-div{
+#btc-div {
   line-height: 20px;
-  & img{
+  & img {
     object-fit: cover;
     object-position: 0px 1px;
     height: 28px;
   }
+}
+
+.margin-ajust-1 {
+  padding-right: 0px;
+}
+
+.margin-ajust-0 {
+  padding-right: 23px;
+}
+
+#yieldCard {
+  color: #02bc63;
+}
+
+#amountCard {
+  color: #13b9d6;
 }

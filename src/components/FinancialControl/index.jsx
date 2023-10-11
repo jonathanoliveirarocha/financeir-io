@@ -49,19 +49,19 @@ const FinancialControl = () => {
         <D.DivSpaceB>
           <D.MiniCard id="in-card">
             <div>
-              <p>Entradas:</p>
+              <p>Entradas</p>
               <p>R${total[0]}</p>
             </div>
           </D.MiniCard>
           <D.MiniCard id="out-card">
             <div>
-              <p>Saídas:</p>
+              <p>Saídas</p>
               <p>R${total[1]}</p>
             </div>
           </D.MiniCard>
           <D.MiniCard id="total-card">
             <div>
-              <p>Total:</p>
+              <p>Total</p>
               <p>R${total[2]}</p>
             </div>
           </D.MiniCard>
@@ -69,16 +69,16 @@ const FinancialControl = () => {
 
         <D.DivSpaceB>
           <div>
-            <label>Rótulo: </label>
-            <G.Input type="text" ref={textRef} />
+            <label htmlFor="mark">Rótulo: </label>
+            <G.Input id="mark" type="text" ref={textRef} />
           </div>
           <div>
-            <label>Valor: </label>
-            <G.Input type="number" ref={valueRef} />
+            <label htmlFor="value">Valor: </label>
+            <G.Input id="value" type="number" ref={valueRef} />
           </div>
           <div>
-            <label>Tipo: </label>
-            <G.Select ref={typeRef}>
+            <label htmlFor="type">Tipo: </label>
+            <G.Select id="type" ref={typeRef}>
               <option value="in">Entrada</option>
               <option value="out">Saída</option>
             </G.Select>

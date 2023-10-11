@@ -27,59 +27,97 @@ const CompoundInterest = () => {
     setValueWithInjetion(value + tempTime * injection);
   };
 
+  function clear() {
+    setValue(0);
+    setInjection(0);
+    setFees(0);
+    setTime(0);
+  }
+
   return (
     <>
       <G.Main>
-        <div>
-          <h1>Juros Compostos</h1>
-          <label>Valor Inicial:</label>
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => setValue(parseFloat(e.target.value))}
-          />
-          <br />
+        <G.Card>
+          <D.InputsDiv>
+            <D.GridContainer>
+              <D.GridItem>
+                <div>
+                  <label className="margin-ajust-0" htmlFor="initial">
+                    Valor Inicial:
+                  </label>
+                  <G.Input
+                    id="initial"
+                    type="number"
+                    value={value}
+                    onChange={(e) => setValue(parseFloat(e.target.value))}
+                  />
+                </div>
 
-          <label>Adição Mensal:</label>
-          <input
-            type="number"
-            value={injection}
-            onChange={(e) => setInjection(parseFloat(e.target.value))}
-          />
-          <br />
+                <div>
+                  <label className="margin-ajust-1" htmlFor="addition">
+                    Adição Mensal:
+                  </label>
+                  <G.Input
+                    id="addition"
+                    type="number"
+                    value={injection}
+                    onChange={(e) => setInjection(parseFloat(e.target.value))}
+                  />
+                </div>
+              </D.GridItem>
 
-          <label>Taxa de Juros (%):</label>
-          <input
-            type="number"
-            value={fees}
-            onChange={(e) => setFees(parseFloat(e.target.value))}
-          />
-          <select onChange={(e) => setTypeFees(e.target.value)}>
-            <option value="monthly">Mensal</option>
-            <option value="yearly">Anual</option>
-          </select>
+              <D.GridItem>
+                <div>
+                  <label htmlFor="fees">Taxa de Juros (%):</label>
+                  <G.Input
+                    id="fees"
+                    type="number"
+                    value={fees}
+                    onChange={(e) => setFees(parseFloat(e.target.value))}
+                  />
+                  <G.Select onChange={(e) => setTypeFees(e.target.value)}>
+                    <option value="monthly">Mensal</option>
+                    <option value="yearly">Anual</option>
+                  </G.Select>
+                </div>
 
-          <br />
+                <div>
+                  <label htmlFor="time">Período de Tempo:</label>
+                  <G.Input
+                    id="time"
+                    type="number"
+                    value={time}
+                    onChange={(e) => setTime(parseInt(e.target.value))}
+                  />
+                  <G.Select onChange={(e) => setTypeTime(e.target.value)}>
+                    <option value="months">Meses</option>
+                    <option value="years">Anos</option>
+                  </G.Select>
+                </div>
+              </D.GridItem>
+            </D.GridContainer>
+            <D.ButtonDiv>
+              <G.Button onClick={calculate}>Calcular</G.Button>
+              <D.ButtonClean onClick={clear}>Limpar</D.ButtonClean>
+            </D.ButtonDiv>
+          </D.InputsDiv>
 
-          <label>Período de Tempo:</label>
-          <input
-            type="number"
-            value={time}
-            onChange={(e) => setTime(parseInt(e.target.value))}
-          />
-          <select onChange={(e) => setTypeTime(e.target.value)}>
-            <option value="months">Meses</option>
-            <option value="years">Anos</option>
-          </select>
-          <br />
-          <button onClick={calculate}>Calcular</button>
-          <div>
-            <p>
-              Seu dinheiro rendeu R${(amount - valueWithInjetion).toFixed(2)},
-              resultando em um montante de R${amount.toFixed(2)}.
-            </p>
-          </div>
-        </div>
+          <D.ResultContainer>
+            <D.ResultCard id="yieldCard">
+              <div>
+                <p>Rendimento</p>
+                <p>R${(amount - valueWithInjetion).toFixed(2)}</p>
+              </div>
+            </D.ResultCard>
+
+            <D.ResultCard id="amountCard">
+              <div>
+                <p>Montante</p>
+                <p>R${amount.toFixed(2)}</p>
+              </div>
+            </D.ResultCard>
+          </D.ResultContainer>
+        </G.Card>
       </G.Main>
     </>
   );
