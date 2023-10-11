@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import * as D from "./styles";
 import * as G from "../general";
+import * as S from "../CompoundInterest/styles";
 
 const LateFee = () => {
   const [value, setValue] = useState(0);
@@ -23,49 +24,101 @@ const LateFee = () => {
     let tempFees = amount - (value + tempPenality);
     setResult([tempPenality, tempFees, amount]);
   }
+
+  function clean() {
+    setValue(0);
+    setFees(0);
+    setDays(0);
+    setPenalty(0);
+    setTypeFees("daily");
+  }
+
   return (
     <>
       <G.Main>
-        <div>
-          <h1>Multa por Atraso</h1>
-          <label>Valor do Débito: </label>
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => setValue(parseFloat(e.target.value))}
-          />
-          <br />
-          <label>Taxa de Juros (%): </label>
-          <input
-            type="number"
-            value={fees}
-            onChange={(e) => setFees(parseFloat(e.target.value))}
-          />
-          <select onChange={(e) => setTypeFees(e.target.value)}>
-            <option value="daily">Diário</option>
-            <option value="monthly">Mensal</option>
-            <option value="yearly">Anual</option>
-          </select>
-          <br />
-          <label>Multa (%): </label>
-          <input
-            type="number"
-            value={penalty}
-            onChange={(e) => setPenalty(parseFloat(e.target.value))}
-          />
-          <br />
-          <label>Dias em Atraso: </label>
-          <input
-            type="number"
-            value={days}
-            onChange={(e) => setDays(parseFloat(e.target.value))}
-          />
-          <br />
-          <button onClick={calculate}>Calcular</button>
-          <p>Multa: R${result[0].toFixed(2)}</p>
-          <p>Juros: R${result[1].toFixed(2)}</p>
-          <p>Resultado: R${result[2].toFixed(2)}</p>
-        </div>
+        <G.Card>
+          <S.InputsDiv id="InputsDivLateFee">
+            <S.GridContainer id="grid-ajust">
+              <S.GridItem>
+                <div>
+                  <label htmlFor="value">Débito: </label>
+                  <G.Input
+                    id="value"
+                    type="number"
+                    value={value}
+                    onChange={(e) => setValue(parseFloat(e.target.value))}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="fees">Juros (%): </label>
+                  <G.Input
+                    id="fees"
+                    type="number"
+                    value={fees}
+                    onChange={(e) => setFees(parseFloat(e.target.value))}
+                  />
+                  <G.Select
+                    value={typeFees}
+                    onChange={(e) => setTypeFees(e.target.value)}
+                  >
+                    <option value="daily">Diário</option>
+                    <option value="monthly">Mensal</option>
+                    <option value="yearly">Anual</option>
+                  </G.Select>
+                </div>
+              </S.GridItem>
+              <S.GridItem>
+                <div>
+                  <label htmlFor="penalty">Multa (%): </label>
+                  <G.Input
+                    id="penalty"
+                    type="number"
+                    value={penalty}
+                    onChange={(e) => setPenalty(parseFloat(e.target.value))}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="time">Dias em Atraso: </label>
+                  <G.Input
+                    id="time"
+                    type="number"
+                    value={days}
+                    onChange={(e) => setDays(parseFloat(e.target.value))}
+                  />
+                </div>
+              </S.GridItem>
+            </S.GridContainer>
+          </S.InputsDiv>
+          <S.ButtonDiv id="ButtonDivLateFee">
+            <G.Button onClick={calculate}>Calcular</G.Button>
+            <S.ButtonClean onClick={clean}>Limpar</S.ButtonClean>
+          </S.ButtonDiv>
+
+          <S.ResultContainer id="ResultContainerLateFee">
+            <S.ResultCard id="amountCard">
+              <div id="fineDiv">
+                <p>Multa</p>
+                <p>R${result[0].toFixed(2)}</p>
+              </div>
+            </S.ResultCard>
+
+            <S.ResultCard id="amountCard">
+              <div id="feesDiv">
+                <p>Juros</p>
+                <p>R${result[1].toFixed(2)}</p>
+              </div>
+            </S.ResultCard>
+
+            <S.ResultCard id="amountCard">
+              <div id="amountDiv">
+                <p>Montante</p>
+                <p>R${result[2].toFixed(2)}</p>
+              </div>
+            </S.ResultCard>
+          </S.ResultContainer>
+        </G.Card>
       </G.Main>
     </>
   );

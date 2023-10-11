@@ -27,11 +27,13 @@ const CompoundInterest = () => {
     setValueWithInjetion(value + tempTime * injection);
   };
 
-  function clear() {
+  function clean() {
     setValue(0);
     setInjection(0);
     setFees(0);
     setTime(0);
+    setTypeTime("monthly");
+    setTypeFees("mounts");
   }
 
   return (
@@ -75,7 +77,10 @@ const CompoundInterest = () => {
                     value={fees}
                     onChange={(e) => setFees(parseFloat(e.target.value))}
                   />
-                  <G.Select onChange={(e) => setTypeFees(e.target.value)}>
+                  <G.Select
+                    value={typeFees}
+                    onChange={(e) => setTypeFees(e.target.value)}
+                  >
                     <option value="monthly">Mensal</option>
                     <option value="yearly">Anual</option>
                   </G.Select>
@@ -89,7 +94,10 @@ const CompoundInterest = () => {
                     value={time}
                     onChange={(e) => setTime(parseInt(e.target.value))}
                   />
-                  <G.Select onChange={(e) => setTypeTime(e.target.value)}>
+                  <G.Select
+                    value={typeTime}
+                    onChange={(e) => setTypeTime(e.target.value)}
+                  >
                     <option value="months">Meses</option>
                     <option value="years">Anos</option>
                   </G.Select>
@@ -98,7 +106,7 @@ const CompoundInterest = () => {
             </D.GridContainer>
             <D.ButtonDiv>
               <G.Button onClick={calculate}>Calcular</G.Button>
-              <D.ButtonClean onClick={clear}>Limpar</D.ButtonClean>
+              <D.ButtonClean onClick={clean}>Limpar</D.ButtonClean>
             </D.ButtonDiv>
           </D.InputsDiv>
 
