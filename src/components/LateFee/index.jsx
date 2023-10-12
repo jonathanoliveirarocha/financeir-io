@@ -12,25 +12,54 @@ const LateFee = () => {
   const [days, setDays] = useState(0);
   const [result, setResult] = useState([0, 0, 0]);
 
+  function voidInput() {
+    if (
+      document.querySelector("#value").value === "" ||
+      document.querySelector("#penalty").value === "" ||
+      document.querySelector("#fees").value === "" ||
+      document.querySelector("#time").value === ""
+    ) {
+      alert("Por favor, preencha todos os campos!");
+      return true;
+    }
+    return false;
+  }
+
+  function negativeInput() {
+    if (
+      document.querySelector("#value").value < 0 ||
+      document.querySelector("#penalty").value < 0 ||
+      document.querySelector("#fees").value < 0 ||
+      document.querySelector("#time").value < 0
+    ) {
+      alert("Os valores não podem ser negativos!");
+      return true;
+    }
+    return false;
+  }
+
   function calculate() {
-    let tempTypeFees =
-      typeFees === "yearly"
-        ? (1 + fees / 100) ** (1 / 365) - 1
-        : typeFees === "monthly"
-        ? (1 + fees / 100) ** (1 / 30) - 1
-        : fees / 100;
-    let tempPenality = value * (penalty / 100);
-    let amount = value * (1 + penalty / 100) * (1 + tempTypeFees) ** days;
-    let tempFees = amount - (value + tempPenality);
-    setResult([tempPenality, tempFees, amount]);
+    if (!voidInput() && !negativeInput()) {
+      let tempTypeFees =
+        typeFees === "yearly"
+          ? (1 + fees / 100) ** (1 / 365) - 1
+          : typeFees === "monthly"
+          ? (1 + fees / 100) ** (1 / 30) - 1
+          : fees / 100;
+      let tempPenality = value * (penalty / 100);
+      let amount = value * (1 + penalty / 100) * (1 + tempTypeFees) ** days;
+      let tempFees = amount - (value + tempPenality);
+      setResult([tempPenality, tempFees, amount]);
+    }
   }
 
   function clean() {
-    setValue(0);
-    setFees(0);
-    setDays(0);
-    setPenalty(0);
+    let inputs = document.querySelectorAll("#InputsDivLateFee input");
+    inputs.forEach((input) => {
+      input.value = "";
+    });
     setTypeFees("daily");
+    setResult([0, 0, 0]);
   }
 
   return (
@@ -45,7 +74,6 @@ const LateFee = () => {
                   <G.Input
                     id="value"
                     type="number"
-                    value={value}
                     onChange={(e) => setValue(parseFloat(e.target.value))}
                   />
                 </div>
@@ -55,7 +83,6 @@ const LateFee = () => {
                   <G.Input
                     id="fees"
                     type="number"
-                    value={fees}
                     onChange={(e) => setFees(parseFloat(e.target.value))}
                   />
                   <G.Select
@@ -74,7 +101,6 @@ const LateFee = () => {
                   <G.Input
                     id="penalty"
                     type="number"
-                    value={penalty}
                     onChange={(e) => setPenalty(parseFloat(e.target.value))}
                   />
                 </div>
@@ -84,7 +110,6 @@ const LateFee = () => {
                   <G.Input
                     id="time"
                     type="number"
-                    value={days}
                     onChange={(e) => setDays(parseFloat(e.target.value))}
                   />
                 </div>

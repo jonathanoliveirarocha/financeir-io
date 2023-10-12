@@ -10,19 +10,37 @@ const FinancialControl = () => {
   const valueRef = useRef();
   const typeRef = useRef();
 
+  function negativeValue() {
+    if(valueRef.current.value<0){
+      alert("O valor preenchido deve não pode ser negativo!")
+      return true
+    }
+    return false
+  }
+
+
+  function voidInput() {
+    if(textRef.current.value=='' || valueRef.current.value==''){
+      alert("Por favor, preencha todos os campos!")
+      return true
+    }
+    return false
+  }
   function addItem() {
-    setList([
-      {
-        id: v4(),
-        name: textRef.current.value,
-        value: parseFloat(valueRef.current.value),
-        type: typeRef.current.value,
-      },
-      ...list,
-    ]);
-    textRef.current.value = ''; 
-    valueRef.current.value = ''; 
-    typeRef.current.value = 'in'; 
+    if (!voidInput() && !negativeValue()) {
+      setList([
+        {
+          id: v4(),
+          name: textRef.current.value,
+          value: parseFloat(valueRef.current.value),
+          type: typeRef.current.value,
+        },
+        ...list,
+      ]);
+      textRef.current.value = "";
+      valueRef.current.value = "";
+      typeRef.current.value = "in";
+    }
   }
 
   function reload() {
@@ -77,7 +95,7 @@ const FinancialControl = () => {
           </div>
           <div>
             <label htmlFor="value">Valor: </label>
-            <G.Input id="value" type="number" ref={valueRef} />
+            <G.Input id="value" type="number" ref={valueRef} min={0} />
           </div>
           <div>
             <label htmlFor="type">Tipo: </label>

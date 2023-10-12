@@ -19,6 +19,20 @@ const CurrencyConverter = () => {
 
   useEffect(() => {}, [price]);
 
+  function voidInput() {
+    if (document.querySelector("#value").value == "") {
+      return true;
+    }
+    return false;
+  }
+
+  function calculate() {
+    if (!voidInput()) {
+      setInput(document.querySelector("#value").value);
+    } else {
+      setInput(0);
+    }
+  }
   return (
     <>
       <G.Main>
@@ -26,14 +40,7 @@ const CurrencyConverter = () => {
           <D.CurrencyContent>
             <D.inputsDiv>
               <label htmlFor="value">Valor: </label>
-              <G.Input
-                id="value"
-                min="0"
-                type="number"
-                placeholder="Valor"
-                value={input}
-                onChange={(e) => setInput(parseFloat(e.target.value))}
-              />
+              <G.Input id="value" min="0" type="number" onChange={calculate} />
               <G.Select onChange={(e) => setFrom(e.target.value)}>
                 <option value="brl">Real</option>
                 <option value="usd">Dólar</option>
