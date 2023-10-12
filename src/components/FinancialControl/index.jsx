@@ -20,6 +20,9 @@ const FinancialControl = () => {
       },
       ...list,
     ]);
+    textRef.current.value = ''; 
+    valueRef.current.value = ''; 
+    typeRef.current.value = 'in'; 
   }
 
   function reload() {

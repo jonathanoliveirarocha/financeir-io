@@ -31,4 +31,10 @@ export const Nav = styled.nav`
   padding: 8px 16px;
   width: 100%;
   border: none;
+  @media (max-width: 856px) {
+    &{
+      display: none;
+    }
+  }
+  
 `;

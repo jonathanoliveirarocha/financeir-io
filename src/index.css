@@ -129,3 +129,104 @@ body {
   }
 }
 
+.nav-button-container {
+  display: none;
+  width: 100%;
+}
+@media (max-width: 856px) {
+  .nav-button-container {
+    display: block;
+  }
+}
+
+.icon {
+  position: absolute;
+  z-index: 4;
+  right: 9px;
+  top: 9px;
+  width: fit-content;
+  cursor: pointer;
+  height: 36px;
+}
+
+.button-menu {
+  margin-top: 12px;
+  left: 10%;
+  width: 37px;
+  height: 6px;
+  background-color: #ebebeb;
+  transition: 500ms;
+}
+
+.button-menu::before {
+  margin-top: -12px;
+  content: "";
+  position: absolute;
+  width: 37px;
+  height: 6px;
+  background-color: #ebebeb;
+  transition: 500ms;
+}
+
+.button-menu::after {
+  margin-top: 12px;
+  content: "";
+  position: absolute;
+  width: 37px;
+  height: 6px;
+  background-color: #ebebeb;
+  transition: 500ms;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  left: 1%;
+  padding: 250px 10px 10px;
+  flex-wrap: nowrap;
+  font-size: 1.2rem;
+}
+
+.list .list-items {
+  padding: 0;
+  list-style: none;
+}
+
+.list .list-items li {
+  margin: 2px 0;
+  cursor: pointer;
+  color: #ebebeb;
+  &:hover {
+    color: #c4c4c4;
+  }
+}
+
+.icon.icon-active .button-menu {
+  background: transparent;
+}
+
+.icon.icon-active .button-menu::after {
+  top: 0;
+  background: #fff;
+  transform: rotate(225deg);
+}
+
+.icon.icon-active .button-menu::before {
+  background: transparent;
+  margin-top: 0px;
+  background: #fff;
+  transform: rotate(-225deg);
+}
+
+.menu.menu-open {
+  width: 150px;
+  float: right;
+  background-color: #4e8578;
+  box-shadow: 10px 0 20px 0 rgb(44, 44, 44);
+  border-bottom-left-radius: 10px;
+}
+
+.menu.menu-close {
+  display: none;
+  width: 0px;
+}
