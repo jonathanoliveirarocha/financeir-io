@@ -5,27 +5,27 @@ import * as D from "./styles";
 import * as G from "../general";
 
 const FinancialControl = () => {
-  const listLocalStorage = JSON.parse(localStorage.getItem('arrayShowItems')) || [];
+  const listLocalStorage =
+    JSON.parse(localStorage.getItem("arrayShowItems")) || [];
   const [list, setList] = useState(listLocalStorage);
   const textRef = useRef();
   const valueRef = useRef();
   const typeRef = useRef();
 
   function negativeValue() {
-    if(valueRef.current.value<0){
-      alert("O valor preenchido deve não pode ser negativo!")
-      return true
+    if (valueRef.current.value < 0) {
+      alert("O valor preenchido deve não pode ser negativo!");
+      return true;
     }
-    return false
+    return false;
   }
 
-
   function voidInput() {
-    if(textRef.current.value=='' || valueRef.current.value==''){
-      alert("Por favor, preencha todos os campos!")
-      return true
+    if (textRef.current.value == "" || valueRef.current.value == "") {
+      alert("Por favor, preencha todos os campos!");
+      return true;
     }
-    return false
+    return false;
   }
   function addItem() {
     if (!voidInput() && !negativeValue()) {
@@ -47,7 +47,7 @@ const FinancialControl = () => {
   function reload() {
     let tempIn = 0;
     let tempOut = 0;
-    localStorage.setItem('arrayShowItems', JSON.stringify(list));
+    localStorage.setItem("arrayShowItems", JSON.stringify(list));
     list.map((element) =>
       element.type === "in"
         ? (tempIn += element.value)
