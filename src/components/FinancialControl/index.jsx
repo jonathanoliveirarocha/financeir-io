@@ -1,11 +1,12 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { v4 } from "uuid";
 import * as D from "./styles";
 import * as G from "../general";
 
 const FinancialControl = () => {
-  const [list, setList] = useState([]);
+  const listLocalStorage = JSON.parse(localStorage.getItem('arrayShowItems')) || [];
+  const [list, setList] = useState(listLocalStorage);
   const textRef = useRef();
   const valueRef = useRef();
   const typeRef = useRef();
@@ -46,7 +47,7 @@ const FinancialControl = () => {
   function reload() {
     let tempIn = 0;
     let tempOut = 0;
-
+    localStorage.setItem('arrayShowItems', JSON.stringify(list));
     list.map((element) =>
       element.type === "in"
         ? (tempIn += element.value)
