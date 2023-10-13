@@ -12,6 +12,7 @@ The application is a financial manager, with the idea of ​​helping users tak
 
 - HTML, CSS , JavaScript
 - React
+- styled-components
 
 > The code was completely commented, for easy understanding of how the entire program works. Furthermore, it is responsive to different screen sizes, making it possible to easily view it on different devices.
 
