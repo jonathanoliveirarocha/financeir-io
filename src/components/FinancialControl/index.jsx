@@ -25,7 +25,7 @@ const FinancialControl = () => {
 
   function negativeValue() {
     if (valueRef.current.value < 0) {
-      alert("O valor preenchido deve não pode ser negativo!");
+      alert("Os valores preenchidos não podem ser negativos!");
       return true;
     }
     return false;
