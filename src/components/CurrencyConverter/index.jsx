@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import * as D from "./styles";
 import * as G from "../general";
 import Axios from "axios";
+import BrlIcon from "/images/brl-icon.svg";
+import BtcIcon from "/images/btc-icon.svg";
+import EurIcon from "/images/eur-icon.svg";
+import UsdIcon from "/images/usd-icon.svg";
 
 const CurrencyConverter = () => {
   const [from, setFrom] = useState("brl");
@@ -57,10 +61,7 @@ const CurrencyConverter = () => {
               {from !== "brl" ? (
                 <D.coinContent>
                   <div id="brl-div">
-                    <img
-                      src="/public/images/brl-icon.svg"
-                      alt="Icone do Real"
-                    />
+                    <img src={BrlIcon} alt="Icone do Real" />
                     {/* Used Image: https://www.flaticon.com/br/icone-gratis/real-brasileiro_10500034?term=real+brasileiro&page=1&position=1&origin=tag&related_id=10500034 */}
                     <p>R${(input * price["brl"]).toFixed(2)}</p>
                   </div>
@@ -69,10 +70,7 @@ const CurrencyConverter = () => {
               {from !== "usd" ? (
                 <D.coinContent>
                   <div id="usd-div">
-                    <img
-                      src="/public/images/usd-icon.svg"
-                      alt="Icone do Dólar"
-                    />
+                    <img src={UsdIcon} alt="Icone do Dólar" />
                     {/* Used Image: https://www.svgrepo.com/svg/485107/dollar-banknote */}
                     <p>US${(input * price["usd"]).toFixed(2)}</p>
                   </div>
@@ -81,10 +79,7 @@ const CurrencyConverter = () => {
               {from !== "eur" ? (
                 <D.coinContent>
                   <div id="eur-div">
-                    <img
-                      src="/public/images/eur-icon.svg"
-                      alt="Icone do Euro"
-                    />
+                    <img src={EurIcon} alt="Icone do Euro" />
                     {/* Used Image: https://www.svgrepo.com/svg/525863/euro */}
                     <p>€{(input * price["eur"]).toFixed(2)}</p>
                   </div>
@@ -93,10 +88,7 @@ const CurrencyConverter = () => {
               {from !== "btc" ? (
                 <D.coinContent>
                   <div id="btc-div">
-                    <img
-                      src="/public/images/btc-icon.svg"
-                      alt="Icone do Bitcoin"
-                    />
+                    <img src={BtcIcon} alt="Icone do Bitcoin" />
                     {/* Used Image: https://www.svgrepo.com/svg/452169/bitcoin */}
                     <p>{(input * price["btc"]).toFixed(9)} BTC</p>
                   </div>
