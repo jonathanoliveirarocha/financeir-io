@@ -9,8 +9,8 @@ import FinancialControl from "./components/FinancialControl";
 import "./index.css";
 
 function App() {
+  // Configuring function to change pages
   const [page, setPage] = useState("Home");
-
   function changePage() {
     if (page === "Home") {
       document.title = "Financeir.io - Home";
@@ -32,6 +32,7 @@ function App() {
 
   return (
     <>
+      {/* Loading page elements */}
       <Header setPage={setPage} />
       {changePage()}
       <Footer />

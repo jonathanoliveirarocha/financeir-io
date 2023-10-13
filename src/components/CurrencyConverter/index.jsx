@@ -9,6 +9,7 @@ const CurrencyConverter = () => {
   const [price, setPrice] = useState([]);
   const [input, setInput] = useState(0);
 
+  // Configuring conversation API
   useEffect(() => {
     Axios.get(
       `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}.json`
@@ -19,6 +20,7 @@ const CurrencyConverter = () => {
 
   useEffect(() => {}, [price]);
 
+  // Checking fields
   function voidInput() {
     if (document.querySelector("#value").value == "") {
       return true;
@@ -26,6 +28,7 @@ const CurrencyConverter = () => {
     return false;
   }
 
+  // Function loads values ​​only if the input is filled
   function calculate() {
     if (!voidInput()) {
       setInput(document.querySelector("#value").value);
@@ -38,6 +41,7 @@ const CurrencyConverter = () => {
       <G.Main>
         <G.Card>
           <D.CurrencyContent>
+            {/* Value input (Result is loaded simultaneously) */}
             <D.inputsDiv>
               <label htmlFor="value">Valor: </label>
               <G.Input id="value" min="0" type="number" onChange={calculate} />
@@ -48,7 +52,7 @@ const CurrencyConverter = () => {
                 <option value="btc">Bitcoin</option>
               </G.Select>
             </D.inputsDiv>
-
+            {/* Cards with conversion results */}
             <D.CurrencyCardContent>
               {from !== "brl" ? (
                 <D.coinContent>

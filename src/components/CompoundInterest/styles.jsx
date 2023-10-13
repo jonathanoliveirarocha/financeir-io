@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Inputs div
 export const InputsDiv = styled.div`
   width: 100%;
   padding: 30px 0 17px 0;
@@ -16,6 +17,7 @@ export const InputsDiv = styled.div`
   }
 `;
 
+// Grid layout for inputs
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 0.78fr 1.1fr;
@@ -24,6 +26,22 @@ export const GridContainer = styled.div`
   width: 100%;
 `;
 
+// Grid Columns
+export const GridItem = styled.div`
+  padding: 10px;
+`;
+
+// Buttons div
+export const ButtonDiv = styled.div`
+  & button {
+    margin: 10px;
+  }
+  @media (max-width: 775px) {
+    margin: 20px;
+  }
+`;
+
+// Clean button
 export const ButtonClean = styled.button`
   background-color: transparent;
   border: none;
@@ -34,23 +52,13 @@ export const ButtonClean = styled.button`
   }
 `;
 
-export const GridItem = styled.div`
-  padding: 10px;
-`;
-
-export const ButtonDiv = styled.div`
-  & button {
-    margin: 10px;
-  }
-  @media (max-width: 775px) {
-    margin: 20px;
-  }
-`;
+// Container with result
 export const ResultContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
+// Card for results
 export const ResultCard = styled.div`
   flex-grow: 1;
   box-shadow: 0 8px 16px 1px rgba(145, 158, 171, 0.24);

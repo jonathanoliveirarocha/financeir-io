@@ -5,6 +5,7 @@ import * as G from "../general";
 import * as S from "../CompoundInterest/styles";
 
 const LateFee = () => {
+  // Variables used
   const [value, setValue] = useState(0);
   const [fees, setFees] = useState(0);
   const [typeFees, setTypeFees] = useState("daily");
@@ -12,6 +13,7 @@ const LateFee = () => {
   const [days, setDays] = useState(0);
   const [result, setResult] = useState([0, 0, 0]);
 
+  // Checking fields
   function voidInput() {
     if (
       document.querySelector("#value").value === "" ||
@@ -38,6 +40,7 @@ const LateFee = () => {
     return false;
   }
 
+  // Function to calculate result
   function calculate() {
     if (!voidInput() && !negativeInput()) {
       let tempTypeFees =
@@ -53,6 +56,7 @@ const LateFee = () => {
     }
   }
 
+  // Function to clear all fields
   function clean() {
     let inputs = document.querySelectorAll("#InputsDivLateFee input");
     inputs.forEach((input) => {
@@ -66,6 +70,7 @@ const LateFee = () => {
     <>
       <G.Main>
         <G.Card>
+          {/* Div with all inputs */}
           <S.InputsDiv id="InputsDivLateFee">
             <S.GridContainer id="grid-ajust">
               <S.GridItem>
@@ -116,11 +121,12 @@ const LateFee = () => {
               </S.GridItem>
             </S.GridContainer>
           </S.InputsDiv>
+          {/* Buttons to calculte and clean */}
           <S.ButtonDiv id="ButtonDivLateFee">
             <G.Button onClick={calculate}>Calcular</G.Button>
             <S.ButtonClean onClick={clean}>Limpar</S.ButtonClean>
           </S.ButtonDiv>
-
+          {/* Showing all results */}
           <S.ResultContainer id="ResultContainerLateFee">
             <S.ResultCard id="amountCard">
               <div id="fineDiv">

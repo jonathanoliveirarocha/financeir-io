@@ -13,61 +13,66 @@ const CompoundInterest = () => {
   const [amount, setAmount] = useState(0);
   const [valueWithInjetion, setValueWithInjetion] = useState(0);
 
-  function voidInput(){
-    if(document.querySelector("#initial").value == ''
-    || document.querySelector("#addition").value == ''
-    || document.querySelector("#fees").value == ''
-    || document.querySelector("#time").value == ''){
-      alert("Por favor, preencha todos os campos!")
-      return true
+  // Checking fields
+  function voidInput() {
+    if (
+      document.querySelector("#initial").value == "" ||
+      document.querySelector("#addition").value == "" ||
+      document.querySelector("#fees").value == "" ||
+      document.querySelector("#time").value == ""
+    ) {
+      alert("Por favor, preencha todos os campos!");
+      return true;
     }
-    return false
+    return false;
   }
 
-  function negativeInput(){
-    if(document.querySelector("#initial").value <0
-    || document.querySelector("#addition").value <0
-    || document.querySelector("#fees").value <0
-    || document.querySelector("#time").value <0){
-      alert("Os valores não podem ser negativos!")
-      return true
+  function negativeInput() {
+    if (
+      document.querySelector("#initial").value < 0 ||
+      document.querySelector("#addition").value < 0 ||
+      document.querySelector("#fees").value < 0 ||
+      document.querySelector("#time").value < 0
+    ) {
+      alert("Os valores não podem ser negativos!");
+      return true;
     }
-    return false
+    return false;
   }
 
+  // Calculating result
   const calculate = () => {
-    if(!voidInput() && !negativeInput()){
+    if (!voidInput() && !negativeInput()) {
       let tempFees =
-      typeFees === "monthly" ? fees / 100 : (1 + fees / 100) ** (1 / 12) - 1;
-    let tempTime = typeTime === "months" ? time : time * 12;
-    let result = value;
+        typeFees === "monthly" ? fees / 100 : (1 + fees / 100) ** (1 / 12) - 1;
+      let tempTime = typeTime === "months" ? time : time * 12;
+      let result = value;
 
-    for (let i = 0; i < tempTime; i++) {
-      result *= 1 + tempFees;
-      result += injection;
+      for (let i = 0; i < tempTime; i++) {
+        result *= 1 + tempFees;
+        result += injection;
+      }
+      setAmount(result);
+      setValueWithInjetion(value + tempTime * injection);
     }
-    setAmount(result);
-    setValueWithInjetion(value + tempTime * injection);
-    }
-    
   };
 
+  // Clear the fields
   function clean() {
-    let inputs = document.querySelectorAll(".input-elements input")
-    inputs.forEach(input=>{
-      input.value=""
-    })
-    setValueWithInjetion(0)
+    let inputs = document.querySelectorAll(".input-elements input");
+    inputs.forEach((input) => {
+      input.value = "";
+    });
+    setValueWithInjetion(0);
     setAmount(0);
     setTypeTime("months");
     setTypeFees("monthly");
-    
   }
-
   return (
     <>
       <G.Main>
         <G.Card>
+          {/* Inputs div */}
           <D.InputsDiv>
             <D.GridContainer className="input-elements">
               <D.GridItem>
@@ -81,7 +86,6 @@ const CompoundInterest = () => {
                     onChange={(e) => setValue(parseFloat(e.target.value))}
                   />
                 </div>
-
                 <div>
                   <label className="margin-ajust-1" htmlFor="addition">
                     Adição Mensal:
@@ -93,7 +97,6 @@ const CompoundInterest = () => {
                   />
                 </div>
               </D.GridItem>
-
               <D.GridItem>
                 <div>
                   <label htmlFor="fees">Taxa de Juros (%):</label>
@@ -128,12 +131,13 @@ const CompoundInterest = () => {
                 </div>
               </D.GridItem>
             </D.GridContainer>
+            {/* Buttons to calculate and clean */}
             <D.ButtonDiv>
               <G.Button onClick={calculate}>Calcular</G.Button>
               <D.ButtonClean onClick={clean}>Limpar</D.ButtonClean>
             </D.ButtonDiv>
           </D.InputsDiv>
-
+          {/* Div with result cards */}
           <D.ResultContainer>
             <D.ResultCard id="yieldCard">
               <div>

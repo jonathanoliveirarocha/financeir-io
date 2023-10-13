@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Header
 export const Header = styled.header`
   width: 100%;
   height: 50px;
@@ -8,6 +9,8 @@ export const Header = styled.header`
   align-items: center;
   box-shadow: 5px 5px 10px -1px #b0b3b2;
 `;
+
+// Page logo
 export const Logo = styled.h1`
   font-size: larger;
   color: #fff;
@@ -17,6 +20,19 @@ export const Logo = styled.h1`
   }
 `;
 
+// Nav desktop version
+export const Nav = styled.nav`
+  padding: 8px 16px;
+  width: 100%;
+  border: none;
+  @media (max-width: 856px) {
+    & {
+      display: none;
+    }
+  }
+`;
+
+// Links
 export const Link = styled.a`
   color: #ebebeb;
   float: right;
@@ -25,16 +41,4 @@ export const Link = styled.a`
   &:hover {
     color: #c4c4c4;
   }
-`;
-
-export const Nav = styled.nav`
-  padding: 8px 16px;
-  width: 100%;
-  border: none;
-  @media (max-width: 856px) {
-    &{
-      display: none;
-    }
-  }
-  
 `;

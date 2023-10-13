@@ -5,12 +5,23 @@ import * as D from "./styles";
 import * as G from "../general";
 
 const FinancialControl = () => {
+  // Loading information saved to local storage
   const listLocalStorage =
     JSON.parse(localStorage.getItem("arrayShowItems")) || [];
+
   const [list, setList] = useState(listLocalStorage);
   const textRef = useRef();
   const valueRef = useRef();
   const typeRef = useRef();
+
+  // Checking fields
+  function voidInput() {
+    if (textRef.current.value == "" || valueRef.current.value == "") {
+      alert("Por favor, preencha todos os campos!");
+      return true;
+    }
+    return false;
+  }
 
   function negativeValue() {
     if (valueRef.current.value < 0) {
@@ -20,13 +31,7 @@ const FinancialControl = () => {
     return false;
   }
 
-  function voidInput() {
-    if (textRef.current.value == "" || valueRef.current.value == "") {
-      alert("Por favor, preencha todos os campos!");
-      return true;
-    }
-    return false;
-  }
+  // Function to add element to array
   function addItem() {
     if (!voidInput() && !negativeValue()) {
       setList([
@@ -44,6 +49,7 @@ const FinancialControl = () => {
     }
   }
 
+  // Reloading result information
   function reload() {
     let tempIn = 0;
     let tempOut = 0;
@@ -60,14 +66,17 @@ const FinancialControl = () => {
     ];
   }
 
+  // Route to delete element
   function deleteElement(id) {
     setList(list.filter((element) => element.id !== id));
   }
 
+  // Constant to pass result array to screen
   const total = reload();
   return (
     <G.Main>
       <G.Card>
+        {/* Result of all operations */}
         <D.DivSpaceB>
           <D.MiniCard id="in-card">
             <div>
@@ -89,6 +98,7 @@ const FinancialControl = () => {
           </D.MiniCard>
         </D.DivSpaceB>
 
+        {/* Section to add new element */}
         <D.DivSpaceB>
           <div>
             <label htmlFor="mark">Rótulo: </label>
@@ -106,9 +116,11 @@ const FinancialControl = () => {
             </G.Select>
           </div>
 
+          {/* Add button */}
           <G.Button onClick={addItem}>Adicionar</G.Button>
         </D.DivSpaceB>
 
+        {/* Loading history of all saved operations */}
         <D.MoneyView>
           {list.map((element) => (
             <D.ElementMoneyView key={element.id}>
@@ -129,12 +141,9 @@ const FinancialControl = () => {
               </D.ElementMoneyCenter>
 
               <D.ElementMoneyCenter>
+                {/* Delete button */}
                 <button
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
+                  id="deleteElementButton"
                   onClick={() => deleteElement(element.id)}
                 >
                   ❌

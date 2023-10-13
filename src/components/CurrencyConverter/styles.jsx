@@ -1,5 +1,25 @@
 import styled from "styled-components";
 
+// Div containing all elements
+export const CurrencyContent = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+// Div with inputs
+export const inputsDiv = styled.div`
+  line-height: 170px;
+  height: 30%;
+  width: 100%;
+  & select {
+    margin: 10px;
+  }
+  & input {
+    width: 30%;
+  }
+`;
+
+// Where the results will be displayed
 export const CurrencyCardContent = styled.div`
   display: flex;
   margin: 0 auto;
@@ -10,6 +30,7 @@ export const CurrencyCardContent = styled.div`
   flex-wrap: wrap;
 `;
 
+// Cards with content
 export const coinContent = styled.div`
   flex-grow: 1;
   box-shadow: 0 8px 16px 1px rgba(145, 158, 171, 0.24);
@@ -23,21 +44,4 @@ export const coinContent = styled.div`
   flex-basis: 200;
   overflow-x: auto;
   padding: 15px;
-`;
-
-export const CurrencyContent = styled.div`
-  height: 100%;
-  width: 100%;
-`;
-
-export const inputsDiv = styled.div`
-  line-height: 170px;
-  height: 30%;
-  width: 100%;
-  & select {
-    margin: 10px;
-  }
-  & input {
-    width: 30%;
-  }
 `;

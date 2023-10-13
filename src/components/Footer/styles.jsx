@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Basic footer configuration
 export const Footer = styled.footer`
   bottom: 0;
   width: 100%;

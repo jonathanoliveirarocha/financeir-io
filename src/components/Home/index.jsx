@@ -6,6 +6,7 @@ const Home = (props) => {
   return (
     <>
       <G.Main>
+        {/* Call To Action with start button */}
         <D.Cta>
           <D.Control>
             <div>
@@ -20,12 +21,13 @@ const Home = (props) => {
                   props.setPage("FinancialControl");
                 }}
               >
+                {/* Button for first resource */}
                 <D.Button href="#ControleFinanceiro">Começar</D.Button>
               </a>
             </div>
           </D.Control>
         </D.Cta>
-
+        {/* Animated image */}
         <D.Img src="/images/creditCard.png" alt="Cartão de Crédito" />
         {/* Used image: https://br.freepik.com/psd-gratuitas/maquete-de-cartao-de-credito-de-plastico_4436557.htm#query=cartao%20de%20credito&position=3&from_view=search&track=ais */}
       </G.Main>
