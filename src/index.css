@@ -124,6 +124,7 @@ body {
   background-color: #4e8578;
   box-shadow: 10px 0 20px 0 rgb(44, 44, 44);
   border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .menu.menu-close {
