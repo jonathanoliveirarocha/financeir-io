@@ -1,6 +1,6 @@
 ## Financeir.io
 
-**Accessible project link: <a href="https://organiza-io.onrender.com/">Financeir.io</a>**
+**Accessible project link: <a href="https://financeir-io.onrender.com/">Financeir.io</a>**
 
 ### What it is :
 
