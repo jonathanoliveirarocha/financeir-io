@@ -45,18 +45,22 @@ The application is a financial manager, with the idea of ​​helping users tak
 </table>
 
 <table width="100%"> 
+<tr>
 <td width="50%">
 <img src="./SAMPLE/SAMPLE2.png/">
 </td> 
 <td width="50%">
 <img src="./SAMPLE/SAMPLE3.png/">
 </td> 
+</tr>
+<tr>
 <td width="50%">
 <img src="./SAMPLE/SAMPLE4.png/">
 </td> 
 <td width="50%">
 <img src="./SAMPLE/SAMPLE5.png/">
 </td> 
+</tr>
 </table>
 
 #### Mobile
