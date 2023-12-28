@@ -31,9 +31,11 @@ The application is a financial manager, with the idea of ​​helping users tak
 #### Desktop
 
 <table width="100%">
+<tr>
 <td width="100%">
 <img src="./SAMPLE/SAMPLE1.png/">
 </td> 
+</tr>
 </table>
 
 <table width="100%"> 
@@ -58,6 +60,7 @@ The application is a financial manager, with the idea of ​​helping users tak
 #### Mobile
 
 <table width="100%"> 
+<tr>
 <td width="25%">
 <img src="./SAMPLE/SAMPLE6.png/">
 </td> 
@@ -70,13 +73,16 @@ The application is a financial manager, with the idea of ​​helping users tak
 <td width="25%">
 <img src="./SAMPLE/SAMPLE9.png/">
 </td> 
+</tr>
 </table>
 
 <table width="100%"> 
+<tr>
 <td width="50%">
 <img src="./SAMPLE/SAMPLE10.png/">
 </td> 
 <td width="50%">
 <img src="./SAMPLE/SAMPLE11.png/">
 </td> 
+</tr>
 </table>
