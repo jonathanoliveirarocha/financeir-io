@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import * as D from "./styles";
 import * as G from "../general";
-import { useState } from "react";
 
 const CompoundInterest = () => {
   const [value, setValue] = useState(0);
@@ -11,68 +10,50 @@ const CompoundInterest = () => {
   const [typeFees, setTypeFees] = useState("monthly");
   const [typeTime, setTypeTime] = useState("months");
   const [amount, setAmount] = useState(0);
-  const [valueWithInjetion, setValueWithInjetion] = useState(0);
+  const [valueWithInjection, setValueWithInjection] = useState(0);
 
-  // Checking fields
-  function voidInput() {
-    if (
-      document.querySelector("#initial").value == "" ||
-      document.querySelector("#addition").value == "" ||
-      document.querySelector("#fees").value == "" ||
-      document.querySelector("#time").value == ""
-    ) {
-      alert("Por favor, preencha todos os campos!");
-      return true;
-    }
-    return false;
-  }
+  const voidInput = () => {
+    const inputs = ["initial", "addition", "fees", "time"];
+    return inputs.some((inputId) => document.querySelector(`#${inputId}`).value === "");
+  };
 
-  function negativeInput() {
-    if (
-      document.querySelector("#initial").value < 0 ||
-      document.querySelector("#addition").value < 0 ||
-      document.querySelector("#fees").value < 0 ||
-      document.querySelector("#time").value < 0
-    ) {
-      alert("Os valores não podem ser negativos!");
-      return true;
-    }
-    return false;
-  }
+  const negativeInput = () => {
+    const inputs = ["initial", "addition", "fees", "time"];
+    return inputs.some((inputId) => parseFloat(document.querySelector(`#${inputId}`).value) < 0);
+  };
 
-  // Calculating result
   const calculate = () => {
     if (!voidInput() && !negativeInput()) {
-      let tempFees =
-        typeFees === "monthly" ? fees / 100 : (1 + fees / 100) ** (1 / 12) - 1;
-      let tempTime = typeTime === "months" ? time : time * 12;
-      let result = value;
+      const tempFees = typeFees === "monthly" ? fees / 100 : Math.pow(1 + fees / 100, 1 / 12) - 1;
+      const tempTime = typeTime === "months" ? time : time * 12;
 
+      let result = value;
       for (let i = 0; i < tempTime; i++) {
         result *= 1 + tempFees;
         result += injection;
       }
+
       setAmount(result);
-      setValueWithInjetion(value + tempTime * injection);
+      setValueWithInjection(value + tempTime * injection);
     }
   };
 
-  // Clear the fields
-  function clean() {
-    let inputs = document.querySelectorAll(".input-elements input");
+  const clean = () => {
+    const inputs = document.querySelectorAll(".input-elements input");
     inputs.forEach((input) => {
       input.value = "";
     });
-    setValueWithInjetion(0);
+
+    setValueWithInjection(0);
     setAmount(0);
     setTypeTime("months");
     setTypeFees("monthly");
-  }
+  };
+
   return (
     <>
       <G.Main>
         <G.Card>
-          {/* Inputs div */}
           <D.InputsDiv>
             <D.GridContainer className="input-elements">
               <D.GridItem>
@@ -131,18 +112,18 @@ const CompoundInterest = () => {
                 </div>
               </D.GridItem>
             </D.GridContainer>
-            {/* Buttons to calculate and clean */}
+
             <D.ButtonDiv>
               <G.Button onClick={calculate}>Calcular</G.Button>
               <D.ButtonClean onClick={clean}>Limpar</D.ButtonClean>
             </D.ButtonDiv>
           </D.InputsDiv>
-          {/* Div with result cards */}
+
           <D.ResultContainer>
             <D.ResultCard id="yieldCard">
               <div>
                 <p>Rendimento</p>
-                <p>R${(amount - valueWithInjetion).toFixed(2)}</p>
+                <p>R${(amount - valueWithInjection).toFixed(2)}</p>
               </div>
             </D.ResultCard>
 
@@ -158,4 +139,5 @@ const CompoundInterest = () => {
     </>
   );
 };
+
 export default CompoundInterest;

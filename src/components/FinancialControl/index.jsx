@@ -1,82 +1,75 @@
-import React from "react";
-import { useRef, useState } from "react";
-import { v4 } from "uuid";
+import React, { useRef, useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 import * as D from "./styles";
 import * as G from "../general";
 
 const FinancialControl = () => {
-  // Loading information saved to local storage
-  const listLocalStorage =
-    JSON.parse(localStorage.getItem("arrayShowItems")) || [];
-
-  const [list, setList] = useState(listLocalStorage);
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem("arrayShowItems")) || []
+  );
   const textRef = useRef();
   const valueRef = useRef();
   const typeRef = useRef();
 
-  // Checking fields
-  function voidInput() {
-    if (textRef.current.value == "" || valueRef.current.value == "") {
+  useEffect(() => {
+    localStorage.setItem("arrayShowItems", JSON.stringify(list));
+  }, [list]);
+
+  const voidInput = () => {
+    if (!textRef.current.value || !valueRef.current.value) {
       alert("Por favor, preencha todos os campos!");
       return true;
     }
     return false;
-  }
+  };
 
-  function negativeValue() {
+  const negativeValue = () => {
     if (valueRef.current.value < 0) {
       alert("Os valores preenchidos não podem ser negativos!");
       return true;
     }
     return false;
-  }
+  };
 
-  // Function to add element to array
-  function addItem() {
+  const addItem = () => {
     if (!voidInput() && !negativeValue()) {
-      setList([
-        {
-          id: v4(),
-          name: textRef.current.value,
-          value: parseFloat(valueRef.current.value),
-          type: typeRef.current.value,
-        },
-        ...list,
-      ]);
+      const newItem = {
+        id: uuid(),
+        name: textRef.current.value,
+        value: parseFloat(valueRef.current.value),
+        type: typeRef.current.value,
+      };
+      setList([newItem, ...list]);
       textRef.current.value = "";
       valueRef.current.value = "";
       typeRef.current.value = "in";
     }
-  }
+  };
 
-  // Reloading result information
-  function reload() {
+  const deleteElement = (id) => {
+    setList(list.filter((element) => element.id !== id));
+  };
+
+  const calculateTotal = () => {
     let tempIn = 0;
     let tempOut = 0;
-    localStorage.setItem("arrayShowItems", JSON.stringify(list));
-    list.map((element) =>
+    list.forEach((element) => {
       element.type === "in"
         ? (tempIn += element.value)
-        : (tempOut += element.value)
-    );
+        : (tempOut += element.value);
+    });
     return [
       tempIn.toFixed(2),
       tempOut.toFixed(2),
       (tempIn - tempOut).toFixed(2),
     ];
-  }
+  };
 
-  // Route to delete element
-  function deleteElement(id) {
-    setList(list.filter((element) => element.id !== id));
-  }
+  const total = calculateTotal();
 
-  // Constant to pass result array to screen
-  const total = reload();
   return (
     <G.Main>
       <G.Card>
-        {/* Result of all operations */}
         <D.DivSpaceB>
           <D.MiniCard id="in-card">
             <div>
@@ -98,7 +91,6 @@ const FinancialControl = () => {
           </D.MiniCard>
         </D.DivSpaceB>
 
-        {/* Section to add new element */}
         <D.DivSpaceB>
           <div>
             <label htmlFor="mark">Rótulo: </label>
@@ -116,11 +108,9 @@ const FinancialControl = () => {
             </G.Select>
           </div>
 
-          {/* Add button */}
           <G.Button onClick={addItem}>Adicionar</G.Button>
         </D.DivSpaceB>
 
-        {/* Loading history of all saved operations */}
         <D.MoneyView>
           {list.map((element) => (
             <D.ElementMoneyView key={element.id}>
@@ -141,7 +131,6 @@ const FinancialControl = () => {
               </D.ElementMoneyCenter>
 
               <D.ElementMoneyCenter>
-                {/* Delete button */}
                 <button
                   id="deleteElementButton"
                   onClick={() => deleteElement(element.id)}
@@ -156,4 +145,5 @@ const FinancialControl = () => {
     </G.Main>
   );
 };
+
 export default FinancialControl;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Div with distance between elements
 export const DivSpaceB = styled.div`
   border-radius: 8px;
   justify-content: space-between;
@@ -15,7 +14,6 @@ export const DivSpaceB = styled.div`
   }
 `;
 
-// Result Cards
 export const MiniCard = styled.div`
   display: flex;
   overflow-x: auto;
@@ -33,7 +31,6 @@ export const MiniCard = styled.div`
   }
 `;
 
-// Operation history
 export const MoneyView = styled.div`
   padding: 5px;
   justify-content: space-between;
@@ -44,7 +41,6 @@ export const MoneyView = styled.div`
   margin-top: 25px;
 `;
 
-// Elements in history
 export const ElementMoneyView = styled.div`
   background-color: white;
   margin-left: 5px;
@@ -56,14 +52,12 @@ export const ElementMoneyView = styled.div`
   box-shadow: 0px 0px 9px 0px #e9ebea;
 `;
 
-// Div with adjustment between history elements
 export const ElementMoneyCenter = styled.div`
   display: flex;
   justify-content: right;
   width: 30%;
 `;
 
-// Colors if positive or negative
 export const In = styled.span`
   color: #23cf5c;
   font-size: small;

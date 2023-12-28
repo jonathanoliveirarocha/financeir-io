@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
-// Div containing all elements
 export const CurrencyContent = styled.div`
   height: 100%;
   width: 100%;
 `;
 
-// Div with inputs
 export const inputsDiv = styled.div`
   line-height: 170px;
   height: 30%;
@@ -19,7 +17,6 @@ export const inputsDiv = styled.div`
   }
 `;
 
-// Where the results will be displayed
 export const CurrencyCardContent = styled.div`
   display: flex;
   margin: 0 auto;
@@ -30,7 +27,6 @@ export const CurrencyCardContent = styled.div`
   flex-wrap: wrap;
 `;
 
-// Cards with content
 export const coinContent = styled.div`
   flex-grow: 1;
   box-shadow: 0 8px 16px 1px rgba(145, 158, 171, 0.24);

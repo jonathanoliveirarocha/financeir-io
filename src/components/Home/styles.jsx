@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Div containing CTA
 export const Cta = styled.div`
   color: #cbcbcd;
   box-shadow: 5px 5px 10px 3px #e9e9eb;
@@ -37,7 +36,6 @@ export const Control = styled.div`
   }
 `;
 
-// CTA message
 export const H1 = styled.h1`
   font-size: 45px;
   font-family: Arial, Helvetica, sans-serif;
@@ -46,14 +44,12 @@ export const H1 = styled.h1`
   margin-bottom: 10px;
 `;
 
-// Application Logo
 export const LogoSpan = styled.span`
   background: linear-gradient(to bottom right, #d8eadf, #1e7661);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
-// Button to start navigation
 export const Button = styled.button`
   background-color: #19716c;
   color: #cfe3db;
@@ -70,7 +66,6 @@ export const Button = styled.button`
   }
 `;
 
-// Animated image
 export const Img = styled.img`
   opacity: 90%;
   width: 20%;

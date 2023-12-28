@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
@@ -6,35 +6,20 @@ import CompoundInterest from "./components/CompoundInterest";
 import CurrencyConverter from "./components/CurrencyConverter";
 import LateFee from "./components/LateFee";
 import FinancialControl from "./components/FinancialControl";
-import "./index.css";
 
 function App() {
-  // Configuring function to change pages
-  const [page, setPage] = useState("Home");
-  function changePage() {
-    if (page === "Home") {
-      document.title = "Financeir.io - Home";
-      return <Home setPage={setPage} />;
-    } else if (page === "CompoundInterest") {
-      document.title = "Financeir.io - Juros Compostos";
-      return <CompoundInterest />;
-    } else if (page === "CurrencyConverter") {
-      document.title = "Financeir.io - Conversor de Moedas";
-      return <CurrencyConverter />;
-    } else if (page === "LateFee") {
-      document.title = "Financeir.io - Multa por atraso";
-      return <LateFee />;
-    } else if (page === "FinancialControl") {
-      document.title = "Financeir.io - Controle Financeiro";
-      return <FinancialControl />;
-    }
-  }
-
   return (
     <>
-      {/* Loading page elements */}
-      <Header setPage={setPage} />
-      {changePage()}
+      <Header />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/juroscompostos" element={<CompoundInterest />} />
+          <Route exact path="/conversordemoedas" element={<CurrencyConverter />} />
+          <Route exact path="/multaporatraso" element={<LateFee />} />
+          <Route exact path="/controlefinanceiro" element={<FinancialControl />} />
+        </Routes>
+      </Router>
       <Footer />
     </>
   );

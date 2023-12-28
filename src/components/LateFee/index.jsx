@@ -1,11 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import * as D from "./styles";
+import React, { useState } from "react";
 import * as G from "../general";
 import * as S from "../CompoundInterest/styles";
 
 const LateFee = () => {
-  // Variables used
   const [value, setValue] = useState(0);
   const [fees, setFees] = useState(0);
   const [typeFees, setTypeFees] = useState("daily");
@@ -13,64 +10,45 @@ const LateFee = () => {
   const [days, setDays] = useState(0);
   const [result, setResult] = useState([0, 0, 0]);
 
-  // Checking fields
-  function voidInput() {
-    if (
-      document.querySelector("#value").value === "" ||
-      document.querySelector("#penalty").value === "" ||
-      document.querySelector("#fees").value === "" ||
-      document.querySelector("#time").value === ""
-    ) {
-      alert("Por favor, preencha todos os campos!");
-      return true;
-    }
-    return false;
-  }
+  const voidInput = () => {
+    const inputs = ["value", "penalty", "fees", "time"];
+    return inputs.some((id) => !document.querySelector(`#${id}`).value);
+  };
 
-  function negativeInput() {
-    if (
-      document.querySelector("#value").value < 0 ||
-      document.querySelector("#penalty").value < 0 ||
-      document.querySelector("#fees").value < 0 ||
-      document.querySelector("#time").value < 0
-    ) {
-      alert("Os valores não podem ser negativos!");
-      return true;
-    }
-    return false;
-  }
+  const negativeInput = () => {
+    const inputs = ["value", "penalty", "fees", "time"];
+    return inputs.some((id) => document.querySelector(`#${id}`).value < 0);
+  };
 
-  // Function to calculate result
-  function calculate() {
+  const calculate = () => {
     if (!voidInput() && !negativeInput()) {
-      let tempTypeFees =
+      const tempTypeFees =
         typeFees === "yearly"
-          ? (1 + fees / 100) ** (1 / 365) - 1
+          ? Math.pow(1 + fees / 100, 1 / 365) - 1
           : typeFees === "monthly"
-          ? (1 + fees / 100) ** (1 / 30) - 1
+          ? Math.pow(1 + fees / 100, 1 / 30) - 1
           : fees / 100;
-      let tempPenality = value * (penalty / 100);
-      let amount = value * (1 + penalty / 100) * (1 + tempTypeFees) ** days;
-      let tempFees = amount - (value + tempPenality);
-      setResult([tempPenality, tempFees, amount]);
-    }
-  }
 
-  // Function to clear all fields
-  function clean() {
-    let inputs = document.querySelectorAll("#InputsDivLateFee input");
+      const tempPenalty = value * (penalty / 100);
+      const amount = value * (1 + penalty / 100) * Math.pow(1 + tempTypeFees, days);
+      const tempFees = amount - (value + tempPenalty);
+      setResult([tempPenalty, tempFees, amount]);
+    }
+  };
+
+  const clean = () => {
+    const inputs = document.querySelectorAll("#InputsDivLateFee input");
     inputs.forEach((input) => {
       input.value = "";
     });
     setTypeFees("daily");
     setResult([0, 0, 0]);
-  }
+  };
 
   return (
     <>
       <G.Main>
         <G.Card>
-          {/* Div with all inputs */}
           <S.InputsDiv id="InputsDivLateFee">
             <S.GridContainer id="grid-ajust">
               <S.GridItem>
@@ -121,37 +99,26 @@ const LateFee = () => {
               </S.GridItem>
             </S.GridContainer>
           </S.InputsDiv>
-          {/* Buttons to calculte and clean */}
+
           <S.ButtonDiv id="ButtonDivLateFee">
             <G.Button onClick={calculate}>Calcular</G.Button>
             <S.ButtonClean onClick={clean}>Limpar</S.ButtonClean>
           </S.ButtonDiv>
-          {/* Showing all results */}
+
           <S.ResultContainer id="ResultContainerLateFee">
-            <S.ResultCard id="amountCard">
-              <div id="fineDiv">
-                <p>Multa</p>
-                <p>R${result[0].toFixed(2)}</p>
-              </div>
-            </S.ResultCard>
-
-            <S.ResultCard id="amountCard">
-              <div id="feesDiv">
-                <p>Juros</p>
-                <p>R${result[1].toFixed(2)}</p>
-              </div>
-            </S.ResultCard>
-
-            <S.ResultCard id="amountCard">
-              <div id="amountDiv">
-                <p>Montante</p>
-                <p>R${result[2].toFixed(2)}</p>
-              </div>
-            </S.ResultCard>
+            {result.map((value, index) => (
+              <S.ResultCard key={index} id="amountCard">
+                <div id={index === 0 ? "fineDiv" : index === 1 ? "feesDiv" : "amountDiv"}>
+                  <p>{index === 0 ? "Multa" : index === 1 ? "Juros" : "Montante"}</p>
+                  <p>R${value.toFixed(2)}</p>
+                </div>
+              </S.ResultCard>
+            ))}
           </S.ResultContainer>
         </G.Card>
       </G.Main>
     </>
   );
 };
+
 export default LateFee;

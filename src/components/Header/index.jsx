@@ -1,26 +1,20 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import * as H from "./styles";
 
-const Header = (props) => {
-  // Toggle menu open or closed
+const Header = () => {
   const [button, setButton] = useState(false);
+
   const changeButton = () => {
     setButton(!button);
   };
+
   return (
     <>
-      {/* Header */}
       <H.Header>
-        {/* Page logo */}
-        <H.Link
-          href="#Home"
-          onClick={() => {
-            props.setPage("Home");
-          }}
-        >
+        <H.Link href="/">
           <H.Logo>Financeir.io</H.Logo>
         </H.Link>
-        {/* Button for mobile version */}
+
         <div className="nav-button-container">
           <div
             className={button ? "icon icon-active" : "icon"}
@@ -29,15 +23,13 @@ const Header = (props) => {
             <div className="button-menu hamburguer-menu-icon"></div>
           </div>
           <div className={button ? "menu menu-open" : "menu menu-close"}>
-            {/* List with links */}
             <div className="list">
               <ul className="list-items">
                 <li>
                   <H.Link
-                    href="#ControleFinanceiro"
+                    href="/controlefinanceiro"
                     onClick={() => {
                       setButton(false);
-                      props.setPage("FinancialControl");
                     }}
                   >
                     Controle Financeiro
@@ -45,10 +37,9 @@ const Header = (props) => {
                 </li>
                 <li>
                   <H.Link
-                    href="#JurosCompostos"
+                    href="/juroscompostos"
                     onClick={() => {
                       setButton(false);
-                      props.setPage("CompoundInterest");
                     }}
                   >
                     Juros Compostos
@@ -56,10 +47,9 @@ const Header = (props) => {
                 </li>
                 <li>
                   <H.Link
-                    href="#ConversorDeMoedas"
+                    href="/conversordemoedas"
                     onClick={() => {
                       setButton(false);
-                      props.setPage("CurrencyConverter");
                     }}
                   >
                     Conversor de Moedas
@@ -67,10 +57,9 @@ const Header = (props) => {
                 </li>
                 <li>
                   <H.Link
-                    href="#MultaPorAtraso"
+                    href="/multaporatraso"
                     onClick={() => {
                       setButton(false);
-                      props.setPage("LateFee");
                     }}
                   >
                     Multa por Atraso
@@ -80,40 +69,12 @@ const Header = (props) => {
             </div>
           </div>
         </div>
-        {/* Nav when in desktop version */}
+
         <H.Nav>
-          <H.Link
-            href="#MultaPorAtraso"
-            onClick={() => {
-              props.setPage("LateFee");
-            }}
-          >
-            Multa por Atraso
-          </H.Link>
-          <H.Link
-            href="#ConversorDeMoedas"
-            onClick={() => {
-              props.setPage("CurrencyConverter");
-            }}
-          >
-            Conversor de Moedas
-          </H.Link>
-          <H.Link
-            href="#JurosCompostos"
-            onClick={() => {
-              props.setPage("CompoundInterest");
-            }}
-          >
-            Juros Compostos
-          </H.Link>
-          <H.Link
-            href="#ControleFinanceiro"
-            onClick={() => {
-              props.setPage("FinancialControl");
-            }}
-          >
-            Controle Financeiro
-          </H.Link>
+          <H.Link href="/multaporatraso">Multa por Atraso</H.Link>
+          <H.Link href="/conversordemoedas">Conversor de Moedas</H.Link>
+          <H.Link href="/juroscompostos">Juros Compostos</H.Link>
+          <H.Link href="/controlefinanceiro">Controle Financeiro</H.Link>
         </H.Nav>
       </H.Header>
     </>
