@@ -1,8 +1,14 @@
-## Financeir.io
+# Financeir.io
 
-**Accessible project link: <a href="https://financeir-io.onrender.com/">Financeir.io</a>**
+**Accessible project link: <a href="https://financeir-io.vercel.app/">Financeir.io</a>**
 
-### What it is :
+## Summary
+
+1. [What it is](#what-it-is)
+2. [Running the application locally](#running-the-application-locally)
+3. [Preview](#preview)
+
+## What it is
 
 The application is a financial manager, with the idea of ​​helping users take better care of their money. The program has a part for cash control, with information saved on local storage, a section for calculating return on investment, another for currency conversion, and even a calculator for overdue debts. Application with a minimalist and pleasant design, as well as completely responsive.
 
@@ -14,27 +20,13 @@ The application is a financial manager, with the idea of ​​helping users tak
 - React
 - styled-components
 
-> The code was completely commented, for easy understanding of how the entire program works. Furthermore, it is responsive to different screen sizes, making it possible to easily view it on different devices.
-
-### Running the Application :
+## Running the application locally
 
 1. First, make sure you have <a href="https://nodejs.org/en">Node.js</a> installed on your machine.
 
-2. Then install the project <a href="./package.json">requirements</a> with the command in the terminal:
+2. Then run the “start.bat” file in the root directory.
 
-   ```bash
-   npm install
-
-   ```
-
-3. Now just open the local server with the command: :
-
-   ```bash
-   npm run dev
-
-   ```
-
-### Preview :
+## Preview
 
 #### Desktop
 
